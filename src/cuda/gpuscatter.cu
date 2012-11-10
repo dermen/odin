@@ -76,7 +76,7 @@ void __device__ rotate(float x, float y, float z,
 }
 
 
-template<unsigned int blockSize>
+//template<unsigned int blockSize>
 void __global__ kernel(float const * const __restrict__ q_x, 
                        float const * const __restrict__ q_y, 
                        float const * const __restrict__ q_z, 
@@ -90,7 +90,7 @@ void __global__ kernel(float const * const __restrict__ q_x,
                        float const * const __restrict__ randN1, 
                        float const * const __restrict__ randN2, 
                        float const * const __restrict__ randN3) {
-
+    const int blockSize=512;
     // shared array for block-wise reduction
     __shared__ float sdata[blockSize];
     
