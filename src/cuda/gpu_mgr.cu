@@ -113,7 +113,7 @@ GPUScatter::GPUScatter (int bpg_,      // <-- defines the number of rotations
 
 void GPUScatter::run() {
     // execute the kernel
-    kernel<tpb> <<<bpg, tpb>>> (d_qx, d_qy, d_qz, d_outQ, nQ, d_rx, d_ry, d_rz, d_id, nAtoms, d_rand1, d_rand2, d_rand3);
+    kernel<512> <<<bpg, tpb>>> (d_qx, d_qy, d_qz, d_outQ, nQ, d_rx, d_ry, d_rz, d_id, nAtoms, d_rand1, d_rand2, d_rand3);
     cudaThreadSynchronize();
     cudaError_t err = cudaGetLastError();
     assert(err == 0);

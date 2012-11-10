@@ -59,13 +59,13 @@ nvcc_compiled = Extension('this_name_is_irrelevant',
 
 # the swig wrapper for gpuaddr.cu gets compiled, and then linked to gpuaddr.o
 swig_wrapper = MyExtension('_gpuscatter',
-                         sources=['src/swig_wrap.cpp'],
+                         sources=['swig_wrap.cpp'],
                          library_dirs=['/usr/local/cuda/lib64'],
                          libraries=['cudart'],
                          # extra bit of magic so that we link this
                          # against the kernels -o file
                          # this picks up the build/temp.linux/src/manager.cu
-                         glob_extra_link_args=['build/*/*/manager.o'])
+                         glob_extra_link_args=['build/*/gpu_mgr.o'])
 
 
 # this cusom class lets us build one extension with nvcc and one extension with regular gcc
